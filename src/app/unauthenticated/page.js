@@ -1,22 +1,21 @@
-import styles from "./page.module.scss";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-export default async function Home() {
+export default async function Unauthenticated() {
   const supabase = createServerComponentClient({ cookies });
   const {
     data: { session },
   } = await supabase.auth.getSession();
 
-  if (!session) {
-    redirect("/unauthenticated");
+  if (session) {
+    redirect("/");
   }
 
   return (
-    <main className={styles.main}>
-      <h1>Pero</h1>
-      <p>Manage you</p>
-    </main>
+    <div>
+      <h1>Unauthenticated</h1>
+      <span>Please Sign In</span>
+    </div>
   );
 }
