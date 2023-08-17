@@ -1,12 +1,18 @@
 import { DeleteButton } from "./DeleteButton";
 import styles from "./TodoCard.module.scss";
 import { useRef } from "react";
+import { motion } from "framer-motion";
 
 export const TodoCard = ({ todo, callback, deleteCallback }) => {
   const ref = useRef(null);
 
   return (
-    <div className={styles.card}>
+    <motion.div
+      className={styles.card}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
+    >
       <div>
         <div className={styles.cardHeader}>
           <DeleteButton callback={() => deleteCallback(todo.id)} />
@@ -47,6 +53,6 @@ export const TodoCard = ({ todo, callback, deleteCallback }) => {
           Close
         </button>
       </dialog>
-    </div>
+    </motion.div>
   );
 };

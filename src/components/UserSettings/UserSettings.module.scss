@@ -1,3 +1,44 @@
 .usericon {
+  position: relative;
   cursor: pointer;
+
+  ul {
+    position: absolute;
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+    right: 100%;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    li {
+      white-space: nowrap;
+      padding: 0.2rem 0.4rem;
+      border-radius: var(--border-radius);
+      &:hover {
+        background-color: var(--color-purple-200);
+      }
+    }
+  }
+}
+
+.infoForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    input:not([type="checkbox"]),
+    textarea {
+      border: 1px solid var(--color-purple-200);
+      &:disabled {
+        background-color: lightgray;
+        border: 1px solid var(--color-purple-100);
+        user-select: none;
+      }
+    }
+  }
 }

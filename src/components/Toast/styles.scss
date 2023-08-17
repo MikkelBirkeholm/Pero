@@ -1,0 +1,41 @@
+.toast {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  transform: translateY(200%);
+  background-color: hsl(var(--color), 80%, 90%);
+  animation: slideIn 300ms ease-in-out 200ms forwards;
+  div {
+    flex: 1;
+    color: hsl(var(--color), 100%, 50%);
+    h2 {
+      font-size: 1rem;
+      text-transform: capitalize;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.warning {
+  --color: 0;
+}
+
+.toastShelf {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 300px;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+  }
+}

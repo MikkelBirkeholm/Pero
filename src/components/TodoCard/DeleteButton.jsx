@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./TodoCard.module.scss";
+
 export const DeleteButton = ({ callback }) => {
   const [showDelete, setShowDelete] = React.useState(false);
 
@@ -10,7 +11,7 @@ export const DeleteButton = ({ callback }) => {
     <button onClick={handleOnClick} className={styles.deleteBtn}>
       {showDelete ? (
         <>
-          <span onClick={callback}>Sure?</span> /
+          <span onClick={callback}>Delete</span> /
           <span onClick={handleOnClick}> Cancel</span>
         </>
       ) : (

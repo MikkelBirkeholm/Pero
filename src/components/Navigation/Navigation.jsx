@@ -1,3 +1,4 @@
+"use client";
 import Login from "../Login/Login";
 import styles from "./Navigation.module.scss";
 import Link from "next/link";
@@ -9,10 +10,9 @@ export default function Navigation() {
         <Link href="/">
           <span className={styles.textLogo}>Pero</span>
         </Link>
-        <Link href="/">Protocols</Link>
         <Link href="/about">About</Link>
       </div>
-      <Login />
+      <p>Replace this</p>
     </div>
   );
 }

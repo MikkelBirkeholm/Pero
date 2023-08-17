@@ -1,0 +1,56 @@
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  ul {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.gridWrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.5rem;
+}
+
+.userDashboard {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  height: 100%;
+  gap: 1rem;
+  // padding: 0 1rem;
+}
+
+.categoryNav {
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+
+  gap: 1rem;
+  height: fit-content;
+  li:has(h2) {
+    flex: 1 0 100%;
+  }
+  li a {
+    background-color: var(--color-orange-200);
+    border-radius: var(--border-radius);
+    padding: var(--text-padding);
+    font-weight: bold;
+    &:hover {
+      color: #fff;
+      background-color: var(--color-green-200);
+    }
+  }
+}
+
+.sidebar {
+  position: relative;
+  gap: 1rem;
+  height: 100%;
+}

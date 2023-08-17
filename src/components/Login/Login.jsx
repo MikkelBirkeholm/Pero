@@ -2,8 +2,9 @@
 import styles from "./Login.module.scss";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import UserSettings from "../UserSettings/UserSettings";
+import Link from "next/link";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -28,37 +29,29 @@ export default function Login() {
     getUser();
   }, []);
 
-  const handleSignUp = async () => {
-    await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${location.origin}/auth/callback`,
-      },
-    });
-    router.refresh();
-  };
-
   const handleSignIn = async () => {
     await supabase.auth.signInWithPassword({
       email,
       password,
     });
-    router.refresh();
+    setLoggedIn(true);
+    router.push("/protocols");
   };
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
+    setLoggedIn(false);
+    setUserID(null);
     router.refresh();
   };
 
   return (
     <div className={styles.loginWrapper}>
-      {userID && <UserSettings userID={userID} />}
       {!loggedIn ? (
         <>
           <input
             name="email"
+            type="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
@@ -69,10 +62,13 @@ export default function Login() {
             value={password}
           />
           <button onClick={handleSignIn}>Sign in</button>
-          <button onClick={handleSignUp}>Sign up</button>
         </>
       ) : (
-        <button onClick={handleSignOut}>Sign out</button>
+        <>
+          <Link href="/protocols">All Protocols</Link>
+          <Link href={`/${userID}/my-protocols`}>My Protocols</Link>
+          <UserSettings userID={userID} signOut={handleSignOut} />
+        </>
       )}
     </div>
   );

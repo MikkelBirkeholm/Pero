@@ -32,13 +32,13 @@ export default function NewTodoForm({ callback }) {
       ])
       .select();
     if (error) console.log("error", error);
+    setFormData(initialState);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     createTodo();
     callback();
-    setFormData(initialState);
   }
 
   return (
@@ -92,7 +92,9 @@ export default function NewTodoForm({ callback }) {
             onChange={(e) => setFormData({ ...formData, link: e.target.value })}
           />
         </label>
-        <button type="submit">Create</button>
+        <button type="submit" tabIndex={5}>
+          Create
+        </button>
       </form>
     </div>
   );
