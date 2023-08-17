@@ -1,5 +1,5 @@
 import { UserInfoForm } from "@/components/UserSettings/UserInfoForm";
-import styles from "./page.module.scss";
+import styles from "../page.module.scss";
 
 export default async function Page({ params }) {
   return (

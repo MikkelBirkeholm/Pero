@@ -2,11 +2,9 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./styles.module.scss";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export const MoodTracker = ({ userID }) => {
   const router = useRouter();
-  const supabase = createClientComponentClient();
 
   const [moodScore, setMoodScore] = useState(0);
   const [moodText, setMoodText] = useState("");

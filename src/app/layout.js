@@ -1,6 +1,5 @@
-import "./globals.css";
+import "./globals.scss";
 import { Inter } from "next/font/google";
-import Navigation from "@/components/Navigation/Navigation";
 import { Suspense } from "react";
 import { NavigationEvents } from "@/components/Navigation/NavigationEvents";
 import { Header } from "@/components/Header/Header";

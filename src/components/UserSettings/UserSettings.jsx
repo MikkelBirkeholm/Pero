@@ -1,16 +1,11 @@
 "use client";
-import { useRouter } from "next/navigation";
 import styles from "./UserSettings.module.scss";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
-export default function UserSettings({ userID, signOut }) {
+export default function UserSettings() {
   const [showMenu, setShowMenu] = useState(false);
   const wrapperRef = useRef(null);
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push(`/${userID}`);
-  };
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
@@ -49,10 +44,16 @@ export default function UserSettings({ userID, signOut }) {
       </svg>
       {showMenu && (
         <ul className="box">
-          <li onClick={handleClick}>Settings</li>
+          <li>
+            <Link href="/settings">Settings</Link>
+          </li>
           <li>Subscription</li>
           <hr />
-          <li onClick={signOut}>Logout</li>
+          <li>
+            <form action="/auth/logout" method="post">
+              <button type="submit">Sign Out</button>
+            </form>
+          </li>
         </ul>
       )}
     </div>

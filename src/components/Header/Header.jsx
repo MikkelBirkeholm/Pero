@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./Header.module.scss";
+import UserSettings from "../UserSettings/UserSettings";
 
 export const Header = () => {
   return (
@@ -17,6 +18,11 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
+      <div>
+        <Link href="/protocols">All Protocols</Link>
+        <Link href={`/my-protocols`}>My Protocols</Link>
+        <UserSettings />
+      </div>
     </header>
   );
 };

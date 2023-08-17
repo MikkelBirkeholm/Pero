@@ -1,6 +1,9 @@
+@import "../../styles/Variables.scss";
+
 .usericon {
   position: relative;
   cursor: pointer;
+  z-index: 1000;
 
   ul {
     position: absolute;
@@ -18,6 +21,14 @@
       border-radius: var(--border-radius);
       &:hover {
         background-color: var(--color-purple-200);
+      }
+      form {
+        button {
+          padding: 0;
+          color: $color-headings;
+          background-color: transparent;
+          font-size: 1rem;
+        }
       }
     }
   }
