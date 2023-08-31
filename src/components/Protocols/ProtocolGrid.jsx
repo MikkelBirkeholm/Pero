@@ -12,7 +12,7 @@ export default async function ProtocolGrid({
       {categories &&
         categories.map((category) => {
           return (
-            <div key={category}>
+            <div key={category.title}>
               <h3 id={category.title}>{category.title}</h3>
               <div className={styles.gridWrapper}>
                 {protocols?.map((protocol) => {

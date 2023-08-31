@@ -4,7 +4,8 @@ const path = require("path");
 
 const nextConfig = {
   sassOptions: {
-    additionalData: `@use "@/styles/variables.scss" as *;`,
+    includePaths: [path.join(__dirname, "styles")],
+    additionalData: `@use "./variables.scss" as *;`,
   },
 };
 
