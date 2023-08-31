@@ -11,20 +11,18 @@ export const Confirm = () => {
       data: { session },
     } = await supabase.auth.getSession();
     if (session) {
-      console.log("user ID", session.user.id);
       chrome.runtime.sendMessage(
         extID,
         { message: session.user.id },
         function (response) {
           if (response) {
-            console.log(response);
+            chrome.runtime.sendMessage(extID, { message: "completed" });
           }
         },
       );
     } else {
       console.log("no session");
     }
-    //   setUser(session.user);
   }
   getUser();
 

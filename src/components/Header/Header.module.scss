@@ -21,9 +21,9 @@
 .textLogo {
   position: relative;
   padding: 0.1rem 0.35rem;
-  border-radius: var(--border-radius);
-  background-color: var(--headings);
-  color: var(--color-bg-100);
+  border-radius: $border-radius;
+  background-color: $color-headings;
+  color: $color-bg;
   font-size: 1.2rem;
   font-weight: 700;
   &::after {
@@ -34,6 +34,6 @@
     font-size: 0.6rem;
     width: fit-content;
     text-align: center;
-    color: var(--headings);
+    color: $color-headings;
   }
 }

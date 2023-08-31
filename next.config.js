@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 
+const path = require("path");
+
 const nextConfig = {
-  experimental: {
-    serverActions: true,
+  sassOptions: {
+    prependData: `@use "./src/styles/variables.scss" as *;`,
   },
 };
 

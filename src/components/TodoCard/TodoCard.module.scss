@@ -6,9 +6,9 @@
   padding: 1rem;
   gap: 1rem;
   height: 100%;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  background-color: var(--color-bg-100);
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  background-color: $color-bg;
   > div {
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@
   align-content: center;
   button {
     background: none;
-    color: var(--headings);
+    color: $color-headings;
     height: 1rem;
     svg {
       pointer-events: none;

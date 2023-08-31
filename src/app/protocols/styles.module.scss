@@ -38,13 +38,13 @@
     flex: 1 0 100%;
   }
   li a {
-    background-color: var(--color-orange-200);
-    border-radius: var(--border-radius);
-    padding: var(--text-padding);
+    background-color: $orange-200;
+    border-radius: $border-radius;
+    padding: $text-padding;
     font-weight: bold;
     &:hover {
       color: #fff;
-      background-color: var(--color-green-200);
+      background-color: $green-200;
     }
   }
 }

@@ -43,7 +43,7 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--background-gradient);
+  background: $background-gradient;
   overflow-x: hidden;
 }
 
@@ -74,14 +74,14 @@ button {
   width: fit-content;
   padding: 0.3rem 0.6rem;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: $border-radius;
   cursor: pointer;
-  background: var(--color-purple-200);
-  color: var(--color-bg-100);
+  background: $purple-200;
+  color: $color-bg;
 }
 
 button:hover {
-  background: var(--color-purple-800);
+  background: $purple-800;
 }
 
 input[type="text"],
@@ -94,18 +94,18 @@ textarea {
   width: 100%;
   padding: 0.5rem 0.8rem;
   border: none;
-  border-radius: var(--border-radius);
-  background: var(--color-purple-100);
-  color: var(--headings);
+  border-radius: $border-radius;
+  background: $purple-100;
+  color: $color-headings;
 }
 
 input[type="checkbox"] {
   cursor: pointer;
   width: 1rem;
   border: none;
-  border-radius: var(--border-radius);
-  color: var(--headings);
-  accent-color: var(--color-purple-800);
+  border-radius: $border-radius;
+  color: $color-headings;
+  accent-color: $purple-800;
 }
 
 input[type="checkbox"]:disabled {
@@ -117,28 +117,28 @@ dialog {
   max-width: 500px;
   border: none;
   padding: 1rem;
-  border-radius: var(--border-radius);
-  background: var(--color-purple-100);
-  color: var(--headings);
+  border-radius: $border-radius;
+  background: $purple-100;
+  color: $color-headings;
 }
 
 .box {
   padding: 1rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  background-color: var(--color-bg-100);
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  background-color: $color-bg;
 }
 
 .marked {
-  color: var(--color-bg-100);
+  color: $color-bg;
   background: linear-gradient(
     90deg,
     rgba(184, 183, 224, 1) 0%,
     rgba(223, 183, 181, 1) 100%
   );
   padding: 0.15rem 0.3rem;
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius);
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
 }
 .loading-wrapper {
   min-height: 50vh;

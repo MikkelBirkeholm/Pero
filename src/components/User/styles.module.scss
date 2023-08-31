@@ -4,16 +4,16 @@
   aspect-ratio: 1 / 1;
   img {
     border-radius: 10em;
-    border: 3px solid var(--color-bg-100);
-    box-shadow: var(--box-shadow);
+    border: 3px solid $color-bg;
+    box-shadow: $box-shadow;
   }
 
   .fallback {
     padding: 0.4rem;
     font-weight: bold;
-    background-color: var(--color-orange-200);
+    background-color: $orange-200;
     border-radius: 10em;
-    border: 3px solid var(--color-bg-100);
-    box-shadow: var(--box-shadow);
+    border: 3px solid $color-bg;
+    box-shadow: $box-shadow;
   }
 }

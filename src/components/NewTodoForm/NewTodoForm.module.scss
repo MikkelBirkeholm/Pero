@@ -1,8 +1,8 @@
 .newTodoForm {
-  background-color: var(--color-bg-100);
+  background-color: $color-bg;
   padding: 0.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
   form {
     display: flex;
     flex-direction: column;

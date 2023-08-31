@@ -59,13 +59,12 @@ export const ActiveProtocolCard = ({ protocol, userID }) => {
         <button onClick={openDialog}>Read More</button>
         <div className={styles.progressContainer}>
           <h2>Progress</h2>
-
-          <ul>{weekProgress}</ul>
+          <p>Progress tracking is coming soon</p>
+          {/* <ul>{weekProgress}</ul> */}
         </div>
         <dialog id={protocol.id} className={styles.cardDialog + " box"}>
           <div className={styles.protocolHeading}>
             <button onClick={closeDialog}>Close</button>
-            <RemoveProtocolButton id={protocol.id} />
           </div>
           <span className={styles.benefits}>{protocol.benefits}</span>
           <p>{protocol.description}</p>

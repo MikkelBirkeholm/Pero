@@ -18,9 +18,9 @@
     li {
       white-space: nowrap;
       padding: 0.2rem 0.4rem;
-      border-radius: var(--border-radius);
+      border-radius: $border-radius;
       &:hover {
-        background-color: var(--color-purple-200);
+        background-color: $purple-200;
       }
       form {
         button {
@@ -44,10 +44,10 @@
     gap: 0.25rem;
     input:not([type="checkbox"]),
     textarea {
-      border: 1px solid var(--color-purple-200);
+      border: 1px solid $purple-200;
       &:disabled {
         background-color: lightgray;
-        border: 1px solid var(--color-purple-100);
+        border: 1px solid $purple-100;
         user-select: none;
       }
     }

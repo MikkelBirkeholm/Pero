@@ -12,8 +12,27 @@ $orange-200: #ffdcc6;
 $red-200: #dfb7b5;
 $red-500: #9d001e;
 
-//layout
+$background-gradient: radial-gradient(
+  circle at center right,
+  rgb(255, 242, 251),
+  rgb(241, 241, 230)
+);
+
+// details
 $box-shadow: 0 3px 16px rgba(0, 0, 0, 0.16);
 $border-radius: 0.35rem;
 $text-padding: 0.3rem 0.6rem;
+
+// layout
 $page-content-width: clamp(300px, 1200px, 95vw);
+@mixin mobile {
+  @media (width < 600px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (width < 800px) {
+    @content;
+  }
+}
