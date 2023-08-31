@@ -3,7 +3,7 @@ import styles from "./Protocols.module.scss";
 import AddNewProtocolButton from "./AddNewProtocolButton";
 import RemoveProtocolButton from "./RemoveProtocolButton";
 
-export const ProtocolCard = ({ protocol, currentProtocols }) => {
+export const ProtocolCard = ({ protocol, currentProtocols, currentUser }) => {
   function openDialog() {
     const dialog = document.getElementById(protocol.id);
     dialog.showModal();
@@ -19,9 +19,9 @@ export const ProtocolCard = ({ protocol, currentProtocols }) => {
         <div className={styles.protocolHeading}>
           <span className={styles.categories}>{protocol.categories}</span>
           {currentProtocols && currentProtocols.includes(protocol.id) ? (
-            <RemoveProtocolButton id={protocol.id} />
+            <RemoveProtocolButton id={protocol.id} currentUser={currentUser} />
           ) : (
-            <AddNewProtocolButton id={protocol.id} />
+            <AddNewProtocolButton id={protocol.id} currentUser={currentUser} />
           )}
         </div>
         <div className={styles.protocolMain}>

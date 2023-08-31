@@ -8,11 +8,11 @@ import UserAvatar from "@/components/User/UserAvatar";
 
 const supabase = createServerComponentClient({ cookies });
 
-// get all user data
 async function GetUserData() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
+  // const session = await getSession();
   let { data: profile, error } = await supabase
     .from("profile")
     .select("*")
@@ -68,6 +68,7 @@ export default async function Page() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
+  // const session = await getSession();
   if (!session) {
     redirect("/unauthenticated");
   }

@@ -5,13 +5,14 @@ export default async function ProtocolGrid({
   categories,
   protocols,
   currentProtocols,
+  currentUser,
 }) {
   return (
     <div className={styles.categoryRows}>
       {categories &&
         categories.map((category) => {
           return (
-            <div>
+            <div key={category}>
               <h3 id={category.title}>{category.title}</h3>
               <div className={styles.gridWrapper}>
                 {protocols?.map((protocol) => {
@@ -21,6 +22,7 @@ export default async function ProtocolGrid({
                         protocol={protocol}
                         currentProtocols={currentProtocols}
                         key={protocol.id}
+                        currentUser={currentUser}
                       />
                     );
                   }

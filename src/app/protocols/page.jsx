@@ -3,11 +3,11 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import ProtocolGrid from "@/components/Protocols/ProtocolGrid";
-import { Suspense } from "react";
-import Loading from "./loading";
+import { getSession, createServerSupabaseClient } from "@/utils/supabaseFix";
 
 export const revalidate = 3600;
 const supabase = createServerComponentClient({ cookies });
+// const supabase = createServerSupabaseClient();
 
 const getProtocols = async () => {
   let { data: protocols } = await supabase.from("protocols").select("*");
@@ -27,6 +27,8 @@ export default async function Protocols() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
+  // const session = await getSession();
+
   if (!session) {
     redirect("/");
   }
@@ -36,7 +38,7 @@ export default async function Protocols() {
       .from("profile")
       .select("protocols")
       .eq("id", user);
-    if (error) console.log("error", error);
+    if (error) console.log("error from protocols page", error);
     if (profile) {
       return profile[0].protocols;
     }
@@ -59,9 +61,9 @@ export default async function Protocols() {
               <h2>Categories</h2>
             </li>
             {AllCategories &&
-              AllCategories.categories.map((category) => {
+              AllCategories.categories.map((category, i) => {
                 return (
-                  <li>
+                  <li key={i}>
                     <a href={`#${category.title}`}>{category.title}</a>
                   </li>
                 );
@@ -74,6 +76,7 @@ export default async function Protocols() {
               categories={AllCategories.categories}
               protocols={AllProtocols.protocols}
               currentProtocols={currentProtocols}
+              currentUser={session.user.id}
             />
           )}
         </div>

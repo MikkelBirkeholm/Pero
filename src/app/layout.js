@@ -1,9 +1,10 @@
 import "./globals.scss";
 import { Inter } from "next/font/google";
-import { Suspense } from "react";
-import { NavigationEvents } from "@/components/Navigation/NavigationEvents";
+
 import { Header } from "@/components/Header/Header";
 
+// export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,10 +18,12 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Header />
         {children}
-        <Suspense fallback={null}>
-          <NavigationEvents />
-        </Suspense>
       </body>
     </html>
   );
 }
+// import { Suspense } from "react";
+// import { NavigationEvents } from "@/components/Navigation/NavigationEvents";
+// {        <Suspense fallback={null}>
+//           <NavigationEvents />
+//         </Suspense>}

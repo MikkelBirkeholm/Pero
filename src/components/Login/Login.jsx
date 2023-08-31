@@ -27,7 +27,7 @@ export default function Login() {
       }
     };
     getUser();
-  }, []);
+  }, [supabase.auth]);
 
   const handleSignIn = async () => {
     await supabase.auth.signInWithPassword({

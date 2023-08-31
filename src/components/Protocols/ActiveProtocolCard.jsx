@@ -4,7 +4,6 @@ import RemoveProtocolButton from "./RemoveProtocolButton";
 import { ProgressCheckbox } from "./atoms/ProgressCheckbox";
 import { supabase } from "@/utils/supabase";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 
 export const ActiveProtocolCard = ({ protocol, userID }) => {
   const router = useRouter();
@@ -50,7 +49,7 @@ export const ActiveProtocolCard = ({ protocol, userID }) => {
       <div className={styles.protocol}>
         <div className={styles.protocolHeading}>
           <span className={styles.categories}>{protocol.categories}</span>
-          <RemoveProtocolButton id={protocol.id} />
+          <RemoveProtocolButton id={protocol.id} userID={userID} />
         </div>
         <div className={styles.protocolMain}>
           <h2>{protocol.title}</h2>
@@ -60,7 +59,6 @@ export const ActiveProtocolCard = ({ protocol, userID }) => {
         <div className={styles.progressContainer}>
           <h2>Progress</h2>
           <p>Progress tracking is coming soon</p>
-          {/* <ul>{weekProgress}</ul> */}
         </div>
         <dialog id={protocol.id} className={styles.cardDialog + " box"}>
           <div className={styles.protocolHeading}>

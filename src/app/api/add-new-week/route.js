@@ -2,6 +2,8 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import generateWeekDates from "@/utils/generateWeekDates";
+const dynamic = "force-dynamic";
+
 export async function GET() {
   const supabase = createRouteHandlerClient({ cookies });
 

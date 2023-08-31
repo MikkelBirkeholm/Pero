@@ -1,5 +1,6 @@
 import { ActiveProtocolCard } from "./ActiveProtocolCard";
 import styles from "./Protocols.module.scss";
+const dynamic = "force-dynamic";
 
 export default function CurrentProtocols({ activeProtocols, userID }) {
   return (

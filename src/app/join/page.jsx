@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import styles from "./styles.module.scss";
 
-export default function join() {
+export default function Page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

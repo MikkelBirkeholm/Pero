@@ -2,13 +2,13 @@
 import { useRouter } from "next/navigation";
 import styles from "./Protocols.module.scss";
 
-export default function RemoveProtocolButton({ id }) {
+export default function RemoveProtocolButton({ id, userID }) {
   const router = useRouter();
 
   async function RemoveProtocol() {
     await fetch("/api/remove-protocol", {
       method: "put",
-      body: JSON.stringify({ protocolID: id }),
+      body: JSON.stringify({ protocolID: id, userID: userID }),
     }).then(() => router.refresh());
   }
 
