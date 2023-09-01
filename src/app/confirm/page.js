@@ -2,6 +2,8 @@
 // import { useEffect } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
+export const dynamic = "force-dynamic";
+
 export const Confirm = () => {
   const supabase = createClientComponentClient();
   const extID = "nifckpdojcjejcdldhibonhemlifmlbi";

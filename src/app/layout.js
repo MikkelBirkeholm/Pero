@@ -3,8 +3,8 @@ import { Inter } from "next/font/google";
 
 import { Header } from "@/components/Header/Header";
 
-// export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

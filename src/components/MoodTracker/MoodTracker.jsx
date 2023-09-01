@@ -18,6 +18,7 @@ export const MoodTracker = ({ userID }) => {
         body: JSON.stringify({
           mood_score: moodScore,
           mood_reason: moodText,
+          userID: userID,
         }),
       });
       const data = await res.json();

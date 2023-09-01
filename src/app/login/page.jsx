@@ -1,5 +1,7 @@
 import styles from "./styles.module.scss";
 
+export const dynamic = "force-dynamic";
+
 export default function Login() {
   return (
     <div className={styles.loginPage}>

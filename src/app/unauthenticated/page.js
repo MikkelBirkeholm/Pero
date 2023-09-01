@@ -2,8 +2,17 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
+async function getCookieData() {
+  const cookieData = cookies().getAll();
+  return cookieData;
+}
+
 export default async function Unauthenticated() {
-  const supabase = createServerComponentClient({ cookies });
+  const cookieData = await getCookieData();
+  const supabase = createServerComponentClient({ cookieData });
+
   const {
     data: { session },
   } = await supabase.auth.getSession();

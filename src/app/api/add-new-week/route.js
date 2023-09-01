@@ -2,10 +2,10 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import generateWeekDates from "@/utils/generateWeekDates";
-const dynamic = "force-dynamic";
 
 export async function GET() {
-  const supabase = createRouteHandlerClient({ cookies });
+  const cookieData = cookies();
+  const supabase = createRouteHandlerClient({ cookieData });
 
   async function addProgressForNextWeek() {
     const currentDate = new Date().toISOString().slice(0, 10);
@@ -30,8 +30,6 @@ export async function GET() {
 
   try {
     // Perform any necessary authentication checks here if needed
-
-    await addProgressForNextWeek();
 
     return NextResponse.json({ data: "success" });
   } catch (error) {

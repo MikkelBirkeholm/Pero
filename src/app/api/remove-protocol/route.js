@@ -2,11 +2,10 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-const dynamic = "force-dynamic";
-
 export async function PUT(request) {
   const { protocolID, userID } = await request.json();
-  const supabase = createRouteHandlerClient({ cookies });
+  const cookieData = cookies();
+  const supabase = createRouteHandlerClient({ cookieData });
   // const {
   //   data: { session },
   // } = await supabase.auth.getSession();

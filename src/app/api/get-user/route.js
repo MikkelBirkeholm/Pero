@@ -2,19 +2,18 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-const dynamic = "force-dynamic";
-
-export async function GET() {
-  //   const { id } = await request.json();
-  const supabase = createRouteHandlerClient({ cookies });
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+export async function GET(request) {
+  const { userID } = await request.json();
+  const cookieData = cookies();
+  const supabase = createRouteHandlerClient({ cookieData });
+  // const {
+  //   data: { session },
+  // } = await supabase.auth.getSession();
 
   let { data: profile, error } = await supabase
     .from("profile")
     .select("*")
-    .eq("id", session.user.id);
+    .eq("id", userID);
   if (error) {
     return NextResponse.json({ data: "error" });
   }

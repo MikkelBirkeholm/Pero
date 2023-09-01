@@ -6,13 +6,21 @@ import styles from "../page.module.scss";
 import { MoodTracker } from "@/components/MoodTracker/MoodTracker";
 import UserAvatar from "@/components/User/UserAvatar";
 
-const supabase = createServerComponentClient({ cookies });
+export const dynamic = "force-dynamic";
+
+async function getCookieData() {
+  const cookieData = cookies().getAll();
+  return cookieData;
+}
 
 async function GetUserData() {
+  const cookieData = await getCookieData();
+  const supabase = createServerComponentClient({ cookieData });
+
   const {
     data: { session },
   } = await supabase.auth.getSession();
-  // const session = await getSession();
+
   let { data: profile, error } = await supabase
     .from("profile")
     .select("*")
@@ -23,6 +31,9 @@ async function GetUserData() {
 }
 
 async function GetProgressForUser(userID) {
+  const cookieData = await getCookieData();
+  const supabase = createServerComponentClient({ cookieData });
+
   let { data: progress, error } = await supabase
     .from("progress")
     .select("protocol_id, date, completed")
@@ -37,6 +48,9 @@ async function GetProgressForUser(userID) {
 }
 
 async function GetActiveProtocols(userProtocols, userID) {
+  const cookieData = await getCookieData();
+  const supabase = createServerComponentClient({ cookieData });
+
   let { data: protocols, error } = await supabase
     .from("protocols")
     .select("*")
@@ -59,6 +73,9 @@ async function GetActiveProtocols(userProtocols, userID) {
 }
 
 export default async function Page() {
+  const cookieData = await getCookieData();
+  const supabase = createServerComponentClient({ cookieData });
+
   const currentDate = new Date().toISOString().slice(0, 10);
   const userData = await GetUserData();
   const latestMood = new Date(userData.latest_mood_update)

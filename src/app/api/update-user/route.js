@@ -1,18 +1,15 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-const dynamic = "force-dynamic";
 
 export async function PUT(request) {
-  const { firstname, lastname } = await request.json();
-  const supabase = createRouteHandlerClient({ cookies });
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const { firstname, lastname, userID } = await request.json();
+  const cookieData = cookies();
+  const supabase = createRouteHandlerClient({ cookieData });
 
   const { data, error } = await supabase
     .from("profile")
-    .upsert({ id: session.user.id, firstname: firstname, lastname: lastname });
+    .upsert({ id: userID, firstname: firstname, lastname: lastname });
   if (error) {
     return NextResponse.json("There was an error");
   }

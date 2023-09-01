@@ -3,13 +3,21 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import ProtocolGrid from "@/components/Protocols/ProtocolGrid";
-import { getSession, createServerSupabaseClient } from "@/utils/supabaseFix";
+
+export const dynamic = "force-dynamic";
 
 export const revalidate = 3600;
-const supabase = createServerComponentClient({ cookies });
+
+async function getCookieData() {
+  const cookieData = cookies().getAll();
+  return cookieData;
+}
 // const supabase = createServerSupabaseClient();
 
 const getProtocols = async () => {
+  const cookieData = await getCookieData();
+  const supabase = createServerComponentClient({ cookieData });
+
   let { data: protocols } = await supabase.from("protocols").select("*");
   if (protocols) {
     return { protocols };
@@ -17,6 +25,9 @@ const getProtocols = async () => {
 };
 
 const getCategories = async () => {
+  const cookieData = await getCookieData();
+  const supabase = createServerComponentClient({ cookieData });
+
   let { data: categories } = await supabase.from("categories").select("*");
   if (categories) {
     return { categories };
@@ -24,6 +35,9 @@ const getCategories = async () => {
 };
 
 export default async function Protocols() {
+  const cookieData = await getCookieData();
+  const supabase = createServerComponentClient({ cookieData });
+
   const {
     data: { session },
   } = await supabase.auth.getSession();

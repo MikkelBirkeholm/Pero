@@ -2,14 +2,10 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-const dynamic = "force-dynamic";
-
 export async function PUT(request) {
-  const { mood_score, mood_reason } = await request.json();
-  const supabase = createRouteHandlerClient({ cookies });
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const { mood_score, mood_reason, userID } = await request.json();
+  const cookieData = cookies();
+  const supabase = createRouteHandlerClient({ cookieData });
 
   const { data, error } = await supabase
     .from("mood_entries")
@@ -17,7 +13,7 @@ export async function PUT(request) {
       {
         mood_score: mood_score,
         mood_reason: mood_reason,
-        user_id: session.user.id,
+        user_id: userID,
       },
     ])
     .select();

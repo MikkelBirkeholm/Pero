@@ -1,8 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import styles from "./UserSettings.module.scss";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-export const UserInfoForm = () => {
+export const UserInfoForm = ({ userID }) => {
+  const supabase = createClientComponentClient();
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState("");
   const [statement, setStatement] = useState("");
@@ -11,11 +13,13 @@ export const UserInfoForm = () => {
 
   async function updateProfile(e) {
     e.preventDefault();
+
     const res = await fetch("/api/update-user", {
       method: "put",
       body: JSON.stringify({
         firstname: firstName,
         lastname: lastName,
+        userID: userID,
       }),
     });
     const data = await res.json();
@@ -28,6 +32,7 @@ export const UserInfoForm = () => {
       body: JSON.stringify({
         statement: statement,
         show_statement: showStatement,
+        userID: userID,
       }),
     });
     const data = await res.json();
@@ -37,9 +42,11 @@ export const UserInfoForm = () => {
     async function getUser() {
       const res = await fetch("/api/get-user", {
         method: "get",
+        body: JSON.stringify({
+          userID: userID,
+        }),
       });
       const data = await res.json();
-      console.log(data);
       setFirstName(data.data[0].firstname);
       setLastName(data.data[0].lastname);
       setEmail(data.data[0].email);
@@ -47,7 +54,7 @@ export const UserInfoForm = () => {
       setShowStatement(data.data[0].show_statement);
     }
     getUser();
-  }, []);
+  }, [userID]);
 
   if (firstName) {
     return (

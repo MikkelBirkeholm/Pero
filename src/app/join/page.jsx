@@ -2,8 +2,10 @@
 import React from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./styles.module.scss";
+
+export const dynamic = "force-dynamic";
 
 export default function Page() {
   const [email, setEmail] = useState("");
