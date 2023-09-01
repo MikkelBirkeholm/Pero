@@ -8,14 +8,8 @@ import UserAvatar from "@/components/User/UserAvatar";
 
 export const dynamic = "force-dynamic";
 
-async function getCookieData() {
-  const cookieData = cookies().getAll();
-  return cookieData;
-}
-
 async function GetUserData() {
-  const cookieData = await getCookieData();
-  const supabase = createServerComponentClient({ cookieData });
+  const supabase = createServerComponentClient({ cookies });
 
   const {
     data: { session },
@@ -31,8 +25,7 @@ async function GetUserData() {
 }
 
 async function GetProgressForUser(userID) {
-  const cookieData = await getCookieData();
-  const supabase = createServerComponentClient({ cookieData });
+  const supabase = createServerComponentClient({ cookies });
 
   let { data: progress, error } = await supabase
     .from("progress")
@@ -48,8 +41,7 @@ async function GetProgressForUser(userID) {
 }
 
 async function GetActiveProtocols(userProtocols, userID) {
-  const cookieData = await getCookieData();
-  const supabase = createServerComponentClient({ cookieData });
+  const supabase = createServerComponentClient({ cookies });
 
   let { data: protocols, error } = await supabase
     .from("protocols")
@@ -73,8 +65,7 @@ async function GetActiveProtocols(userProtocols, userID) {
 }
 
 export default async function Page() {
-  const cookieData = await getCookieData();
-  const supabase = createServerComponentClient({ cookieData });
+  const supabase = createServerComponentClient({ cookies });
 
   const currentDate = new Date().toISOString().slice(0, 10);
   const userData = await GetUserData();

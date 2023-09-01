@@ -40,11 +40,8 @@ export const UserInfoForm = ({ userID }) => {
 
   useEffect(() => {
     async function getUser() {
-      const res = await fetch("/api/get-user", {
+      const res = await fetch(`/api/get-user/${userID}`, {
         method: "get",
-        body: JSON.stringify({
-          userID: userID,
-        }),
       });
       const data = await res.json();
       setFirstName(data.data[0].firstname);

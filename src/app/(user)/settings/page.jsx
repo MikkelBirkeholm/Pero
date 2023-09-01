@@ -1,13 +1,12 @@
 import { UserInfoForm } from "@/components/UserSettings/UserInfoForm";
 import styles from "../page.module.scss";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
-
 export default async function Page() {
-  const cookieData = cookies();
-  const supabase = createServerComponentClient({ cookieData });
+  const supabase = createServerComponentClient({ cookies });
 
   const {
     data: { session },
