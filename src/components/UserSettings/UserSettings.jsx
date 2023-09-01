@@ -9,9 +9,6 @@ export default function UserSettings() {
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
-      /**
-       * Alert if clicked on outside of element
-       */
       function handleClickOutside(event) {
         if (ref.current && ref.current.contains(event.target)) {
           setShowMenu(true);

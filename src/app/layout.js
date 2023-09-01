@@ -1,6 +1,5 @@
-import "./globals.scss";
+import "../styles/global.scss";
 import { Inter } from "next/font/google";
-
 import { Header } from "@/components/Header/Header";
 
 export const dynamic = "force-dynamic";

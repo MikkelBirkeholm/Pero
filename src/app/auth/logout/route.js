@@ -6,8 +6,8 @@ export const dynamic = "force-dynamic";
 
 export async function POST(request) {
   const requestUrl = new URL(request.url);
-  const cookieData = cookies();
-  const supabase = createRouteHandlerClient({ cookieData });
+
+  const supabase = createRouteHandlerClient({ cookies });
 
   await supabase.auth.signOut();
 

@@ -5,12 +5,11 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
 export async function POST(request) {
-  const cookieData = cookies();
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
   const email = formData.get("email");
   const password = formData.get("password");
-  const supabase = createRouteHandlerClient({ cookieData });
+  const supabase = createRouteHandlerClient({ cookies });
 
   await supabase.auth.signInWithPassword({
     email,

@@ -1,13 +1,18 @@
 .loginPage {
   display: grid;
   place-content: center;
-  height: 100vh;
-  width: 100vw;
+  gap: 1rem;
+  width: 100%;
 
   form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: clamp(2ch, 300px, 95vw);
     gap: 0.5rem;
+    padding: 2rem;
+    border-radius: $border-radius;
+    background-color: $color-bg;
+    box-shadow: $box-shadow;
   }
 }

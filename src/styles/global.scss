@@ -8,31 +8,6 @@
     rgb(255, 242, 251),
     rgb(241, 241, 230)
   );
-
-  /* Colors */
-  --headings: #060628;
-  --color-bg-100: #f9f8ff;
-  --color-purple-100: #efedff;
-  --color-purple-200: #b8b7e0;
-  --color-purple-800: #323455;
-  --color-green-100: #7fd1ae;
-  --color-green-200: #499a7a;
-  --color-orange-100: #ffefec;
-  --color-orange-200: #ffdcc6;
-  --color-red-200: #dfb7b5;
-  --color-red-500: #9d001e;
-
-  /* Others */
-  --box-shadow: 0 3px 16px rgba(0, 0, 0, 0.16);
-  --border-radius: 0.35rem;
-  --text-padding: 0.3rem 0.6rem;
-  --page-content-width: clamp(300px, 1200px, 95vw);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-  }
 }
 
 *:not(dialog) {
@@ -52,7 +27,7 @@ body {
   position: relative;
   max-width: 100vw;
   min-height: 100dvh;
-  color: var(--headings);
+  color: $color-headings;
 }
 
 body main {
@@ -129,6 +104,11 @@ dialog {
   background-color: $color-bg;
 }
 
+.styledBtn {
+  background-color: $color-headings;
+  color: $color-bg;
+}
+
 .marked {
   color: $color-bg;
   background: linear-gradient(
@@ -140,6 +120,7 @@ dialog {
   box-shadow: $box-shadow;
   border-radius: $border-radius;
 }
+
 .loading-wrapper {
   min-height: 50vh;
   margin: auto;
