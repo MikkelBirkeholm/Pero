@@ -5,7 +5,7 @@ const path = require("path");
 const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
-    prependData: `@import "variables.scss" as *;`,
+    prependData: `@use "src/styles/variables.scss" as *;`,
   },
 };
 
