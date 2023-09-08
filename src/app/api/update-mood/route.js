@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function PUT(request) {
   const { mood_score, mood_reason, userID } = await request.json();
   const cookieData = cookies();
-  const supabase = createRouteHandlerClient({ cookieData });
+  const supabase = createRouteHandlerClient({ cookies });
 
   const { data, error } = await supabase
     .from("mood_entries")
