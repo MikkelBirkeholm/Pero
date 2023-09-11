@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import styles from "../page.module.scss";
 import { MoodTracker } from "@/components/MoodTracker/MoodTracker";
 import UserAvatar from "@/components/User/UserAvatar";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 export const dynamic = "force-dynamic";
 
@@ -76,7 +78,7 @@ export default async function Page() {
   const {
     data: { session },
   } = await supabase.auth.getSession();
-  // const session = await getSession();
+
   if (!session) {
     redirect("/unauthenticated");
   }
@@ -103,15 +105,16 @@ export default async function Page() {
         </div>
       </div>
       <div>
-        {currentDate > latestMood && <MoodTracker userID={session.user.id} />}
-        <h2>Active Protocols</h2>
-
-        {activeProtocols && (
-          <CurrentProtocols
-            activeProtocols={activeProtocols}
-            userID={session.user.id}
-          />
-        )}
+        <Suspense fallback={<Loading />}>
+          {currentDate > latestMood && <MoodTracker userID={session.user.id} />}
+          <h2>Active Protocols</h2>
+          {activeProtocols && (
+            <CurrentProtocols
+              activeProtocols={activeProtocols}
+              userID={session.user.id}
+            />
+          )}
+        </Suspense>
       </div>
     </main>
   );

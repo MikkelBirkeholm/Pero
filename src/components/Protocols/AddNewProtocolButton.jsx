@@ -2,13 +2,13 @@
 import { useRouter } from "next/navigation";
 import styles from "./Protocols.module.scss";
 
-export default function AddNewProtocolButton({ id, currentUser }) {
+export default function AddNewProtocolButton({ id, userID }) {
   const router = useRouter();
 
   async function AddProtocol() {
     await fetch("/api/add-protocol", {
       method: "put",
-      body: JSON.stringify({ protocolID: id, userID: currentUser }),
+      body: JSON.stringify({ protocolID: id, userID: userID }),
     });
     router.refresh();
   }

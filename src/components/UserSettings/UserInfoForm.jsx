@@ -1,15 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
 import styles from "./UserSettings.module.scss";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export const UserInfoForm = ({ userID }) => {
-  const supabase = createClientComponentClient();
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState("");
   const [statement, setStatement] = useState("");
-  const [showStatement, setShowStatement] = useState(false);
   const [email, setEmail] = useState("");
+  const [showStatement, setShowStatement] = useState(false);
 
   async function updateProfile(e) {
     e.preventDefault();

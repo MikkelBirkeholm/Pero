@@ -5,8 +5,7 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
 export async function GET(request) {
-  const cookieData = cookies();
-  const supabase = createRouteHandlerClient({ cookieData });
+  const supabase = createRouteHandlerClient({ cookies });
   const {
     data: { session },
   } = await supabase.auth.getSession();

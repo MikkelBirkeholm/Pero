@@ -2,15 +2,15 @@
 import styles from "./Protocols.module.scss";
 import AddNewProtocolButton from "./AddNewProtocolButton";
 import RemoveProtocolButton from "./RemoveProtocolButton";
+import { useRef } from "react";
 
-export const ProtocolCard = ({ protocol, currentProtocols, currentUser }) => {
+export const ProtocolCard = ({ protocol, currentProtocols, userID }) => {
+  const dialogRef = useRef();
   function openDialog() {
-    const dialog = document.getElementById(protocol.id);
-    dialog.showModal();
+    dialogRef.current.showModal();
   }
   function closeDialog() {
-    const dialog = document.getElementById(protocol.id);
-    dialog.close();
+    dialogRef.current.close();
   }
 
   return (
@@ -19,9 +19,9 @@ export const ProtocolCard = ({ protocol, currentProtocols, currentUser }) => {
         <div className={styles.protocolHeading}>
           <span className={styles.categories}>{protocol.categories}</span>
           {currentProtocols && currentProtocols.includes(protocol.id) ? (
-            <RemoveProtocolButton id={protocol.id} currentUser={currentUser} />
+            <RemoveProtocolButton id={protocol.id} userID={userID} />
           ) : (
-            <AddNewProtocolButton id={protocol.id} currentUser={currentUser} />
+            <AddNewProtocolButton id={protocol.id} userID={userID} />
           )}
         </div>
         <div className={styles.protocolMain}>
@@ -29,13 +29,13 @@ export const ProtocolCard = ({ protocol, currentProtocols, currentUser }) => {
           <span className={styles.benefits}>{protocol.benefits}</span>
         </div>
         <button onClick={openDialog}>Read More</button>
-        <dialog id={protocol.id} className={styles.cardDialog + " box"}>
+        <dialog ref={dialogRef} className={styles.cardDialog + " box"}>
           <div className={styles.protocolHeading}>
             <button onClick={closeDialog}>Close</button>
             {currentProtocols && currentProtocols.includes(protocol.id) ? (
-              <RemoveProtocolButton id={protocol.id} />
+              <RemoveProtocolButton id={protocol.id} userID={userID} />
             ) : (
-              <AddNewProtocolButton id={protocol.id} />
+              <AddNewProtocolButton id={protocol.id} userID={userID} />
             )}
           </div>
           <span className={styles.benefits}>{protocol.benefits}</span>

@@ -6,13 +6,9 @@ export const dynamic = "force-dynamic";
 
 export async function PUT(request) {
   const { protocolID, userID } = await request.json();
-  // const cookieData = cookies();
-  const supabase = createRouteHandlerClient({ cookies });
-  // const {
-  //   data: { session },
-  // } = await supabase.auth.getSession();
 
-  // Call the database function to remove the protocol from the user's protocols
+  const supabase = createRouteHandlerClient({ cookies });
+
   try {
     await supabase.rpc("remove_user_protocol", {
       user_id: userID,

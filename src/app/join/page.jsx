@@ -4,6 +4,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./styles.module.scss";
+import { LoginTabs } from "@/components/Login/LoginTabs";
 
 export const dynamic = "force-dynamic";
 
@@ -37,7 +38,8 @@ export default function Page() {
   return (
     <div className={styles.signUpPage}>
       <h1>Start Using Pero</h1>
-      <form onSubmit={handleSignUp}>
+      <LoginTabs />
+      {/* <form onSubmit={handleSignUp}>
         <input
           type="email"
           placeholder="Email"
@@ -51,7 +53,7 @@ export default function Page() {
           onChange={handleInputChange}
         />
         <button>Sign up</button>
-      </form>
+      </form> */}
     </div>
   );
 }

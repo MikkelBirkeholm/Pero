@@ -4,7 +4,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { redirect } from "next/navigation";
 import ProtocolGrid from "@/components/Protocols/ProtocolGrid";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 const getProtocols = async () => {
   const supabase = createServerComponentClient({ cookies });
@@ -78,7 +78,7 @@ export default async function Protocols() {
               categories={AllCategories.categories}
               protocols={AllProtocols.protocols}
               currentProtocols={currentProtocols}
-              currentUser={session.user.id}
+              userID={session.user.id}
             />
           )}
         </div>

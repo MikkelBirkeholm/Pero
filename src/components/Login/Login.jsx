@@ -1,16 +1,17 @@
 "use client";
 import styles from "./Login.module.scss";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { supabase } from "@/utils/supabase";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import UserSettings from "../UserSettings/UserSettings";
 import Link from "next/link";
 
+// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+// const supabase = createClientComponentClient();
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const supabase = createClientComponentClient();
   const [loggedIn, setLoggedIn] = useState(false);
   const [userID, setUserID] = useState(null);
 
@@ -27,7 +28,7 @@ export default function Login() {
       }
     };
     getUser();
-  }, [supabase.auth]);
+  }, []);
 
   const handleSignIn = async () => {
     await supabase.auth.signInWithPassword({

@@ -1,4 +1,5 @@
 "use client";
+import { useRef } from "react";
 import styles from "./Protocols.module.scss";
 import RemoveProtocolButton from "./RemoveProtocolButton";
 import { ProgressCheckbox } from "./atoms/ProgressCheckbox";
@@ -7,16 +8,15 @@ import { useRouter } from "next/navigation";
 
 export const ActiveProtocolCard = ({ protocol, userID }) => {
   const router = useRouter();
+  const dialogRef = useRef();
   const weekDayLetters = ["M", "T", "W", "T", "F", "S", "S"];
   // const { data, error } = await supabase.auth.getSession();
 
   function openDialog() {
-    const dialog = document.getElementById(protocol.id);
-    dialog.showModal();
+    dialogRef.current.showModal();
   }
   function closeDialog() {
-    const dialog = document.getElementById(protocol.id);
-    dialog.close();
+    dialogRef.current.close();
   }
 
   const currentDate = new Date().toISOString().slice(0, 10);
@@ -60,7 +60,7 @@ export const ActiveProtocolCard = ({ protocol, userID }) => {
           <h2>Progress</h2>
           <p>Progress tracking is coming soon</p>
         </div>
-        <dialog id={protocol.id} className={styles.cardDialog + " box"}>
+        <dialog ref={dialogRef} className={styles.cardDialog + " box"}>
           <div className={styles.protocolHeading}>
             <button onClick={closeDialog}>Close</button>
           </div>

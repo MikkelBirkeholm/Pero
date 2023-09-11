@@ -37,3 +37,47 @@
     color: $color-headings;
   }
 }
+
+.dropdownTrigger {
+  cursor: pointer;
+}
+
+.dropdown {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  .item {
+    white-space: nowrap;
+    padding: 0.2rem 0.4rem;
+    border-radius: $border-radius;
+    &:hover {
+      outline: none;
+      background-color: $purple-200;
+    }
+    button {
+      padding: 0;
+      color: $color-headings;
+      background-color: transparent;
+      font-size: 1rem;
+    }
+  }
+}
+.dropdownContent {
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+.dropdownContent[data-state="open"] {
+  animation: slideUpAndFade 290ms ease forwards;
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

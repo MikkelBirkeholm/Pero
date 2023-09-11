@@ -32,7 +32,24 @@ $page-content-width: clamp(300px, 1200px, 95vw);
 }
 
 @mixin tablet {
-  @media (width < 800px) {
+  @media (width <= 800px) {
     @content;
+  }
+}
+
+@mixin desktop {
+  @media (width > 800px) {
+    @content;
+  }
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

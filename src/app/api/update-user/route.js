@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 
 export async function PUT(request) {
   const { firstname, lastname, userID } = await request.json();
-  // const cookieData = cookies();
   const supabase = createRouteHandlerClient({ cookies });
 
   const { data, error } = await supabase

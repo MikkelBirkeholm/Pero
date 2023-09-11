@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./Header.module.scss";
-import UserSettings from "../UserSettings/UserSettings";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+// import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { supabase } from "@/utils/supabase";
+import { Dropdown } from "./DropdownMenu/Dropdown";
 
 export const Header = () => {
-  const supabase = createClientComponentClient();
+  // const supabase = createClientComponentClient();
   const [loggedIn, setLoggedIn] = useState(null);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export const Header = () => {
           <>
             <Link href="/protocols">All Protocols</Link>
             <Link href="/my-protocols">My Protocols</Link>
-            <UserSettings />
+            <Dropdown />
           </>
         ) : (
           <button className="styledBtn">
